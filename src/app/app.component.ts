@@ -9,5 +9,5 @@ import { SiteFrameworkModule } from "./site-framework/site-framework.module";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'EarlySteps';
+  title = 'Early Steps - Preschool finder - Singapore';
 }
