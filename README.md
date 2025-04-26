@@ -4,6 +4,8 @@
 
 EarlySteps is a web application designed to help users explore the pre-school options around Singapore. It provides features such as listing schools, viewing detailed information about a school like food options, languages taught, vacancy information, and more. The project is built using Angular and it's built based on the gov.sg datasets available publicly.
 
+Click [here](https://wonderful-flower-06e355800.6.azurestaticapps.net/) to check it out.
+
 ## How to Run the Project
 
 Follow these steps to set up and run the project locally:

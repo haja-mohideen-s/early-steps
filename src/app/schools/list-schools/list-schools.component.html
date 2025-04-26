@@ -1,5 +1,5 @@
 @if(schools?.result?.records != undefined && schools?.result?.records!.length > 0){
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2 dark:bg-gray-900">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2 dark:bg-gray-900 justify-items-center">
 
     @for (school of schools?.result?.records; track school.centre_code) {
     <app-school-card [school]="school"></app-school-card>
