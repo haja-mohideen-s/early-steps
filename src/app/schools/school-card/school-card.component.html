@@ -2,14 +2,11 @@
     <div
         class="w-full rounded-lg border shadow-sm overflow-hidden bg-white border-stone-200 shadow-stone-950/5 max-w-xs">
         <div class="w-[calc(100%-16px)] h-max rounded m-2 mx-3 mt-3">
-            <!-- image goes here -->
         </div>
         <div class="w-full h-max rounded px-3.5 py-2.5">
             <h6 class="font-sans antialiased font-bold text-base md:text-lg lg:text-xl text-current">
                 {{ school.centre_name }}</h6>
-            <!-- <p class="font-sans antialiased text-base my-1 text-stone-600">The place is close to Barceloneta Beach
-                and bus stop just 2 min by walk and near to "Naviglio" where you can enjoy the main night life in
-                Barcelona.</p> -->
+
             <div class="grid grid-cols-6 gap-1 pt-2">
                 <div class="col-span-1">
                     <button
@@ -36,15 +33,6 @@
                         🔗
                     </button>
                 </div>
-                <!-- <div class="col-span-5 w-full rounded-lg text-sm normal-case">
-                    @if( school.centre_website == "na"){
-                    {{ "No record" }}
-                    }
-                    @else {
-                    <a class="underline" target="_blank" href="//{{school.centre_website}}"> {{school.centre_website}}
-                    </a>
-                    }
-                </div> -->
                 <p class="text-gray-500 col-span-3 dark:text-gray-400"><a href="//{{school.centre_website}}"
                         class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
                         Visit website
@@ -58,16 +46,10 @@
                 <div class="col-span-6 justify-items-center mt-2">
                     <div [innerHTML]="renderVacancies()"></div>
                 </div>
-                <!--  -->
-
             </div>
 
             <div class="w-full pt-4 pb-1.5 rounded flex flex-row items-center justify-center">
-                <!-- <a class="inline-flex items-center justify-center border align-middle select-none font-sans font-medium text-center duration-300 ease-in disabled:opacity-50 disabled:shadow-none disabled:cursor-not-allowed focus:shadow-none text-sm py-1.5 px-3 shadow-sm hover:shadow bg-stone-800 hover:bg-stone-700 relative bg-gradient-to-b from-stone-700 to-stone-800 border-stone-900 text-stone-50 rounded-lg hover:bg-gradient-to-b hover:from-stone-800 hover:to-stone-800 hover:border-stone-900 after:absolute after:inset-0 after:rounded-[inherit] after:box-shadow after:shadow-[inset_0_1px_0px_rgba(255,255,255,0.25),inset_0_-2px_0px_rgba(0,0,0,0.35)] after:pointer-events-none transition antialiased"
-                    href="mailto:{{ school.centre_email_address }}">
-                    Email School
-                </a> -->
-                <button class="secondary w-24 text-white h-10 rounded-sm"
+                <button class="secondary w-24 text-white h-10 rounded-sm cursor-pointer"
                     (click)="navigateToSchoolDetails(school.centre_code)">
                     More Info
                 </button>

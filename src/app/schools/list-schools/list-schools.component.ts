@@ -16,6 +16,11 @@ export class ListSchoolsComponent implements OnInit {
   searchSchoolName: string = '';
   searchSchoolLocation: string = '';
   pageSize: number = 10;
+  currentPage: number = 1;
+  totalRecords: number = 0;
+  totalPages: number = 0;
+
+  offset: number = 0;
 
   constructor(private schoolService: SchoolService) {
 
@@ -23,12 +28,38 @@ export class ListSchoolsComponent implements OnInit {
   ngOnInit(): void {
     this.schoolService.getSchools().subscribe(data => {
       this.schools = data;
+      this.totalRecords = this.schools.result.total;
+      this.totalPages = Math.ceil(this.totalRecords / this.pageSize);
     });
   }
 
   refreshData() {
+    this.currentPage = 1;
     this.schoolService.getSchools(this.searchSchoolName, this.searchSchoolLocation, this.pageSize).subscribe(data => {
       this.schools = data;
+      this.totalRecords = this.schools.result.total;
+      this.totalPages = Math.ceil(this.totalRecords / this.pageSize);
     });
+  }
+
+  reloadPageData() {
+    this.offset = (this.currentPage - 1) * this.pageSize;
+    this.schoolService.getSchools(this.searchSchoolName, this.searchSchoolLocation, this.pageSize, this.offset).subscribe(data => {
+      this.schools = data;
+      console.log(this.currentPage);
+    });
+  }
+
+  goToPreviousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.reloadPageData();
+    }
+  }
+  goToNextPage() {
+    if (this.totalRecords - this.offset > this.pageSize) {
+      this.currentPage++;
+      this.reloadPageData();
+    }
   }
 }

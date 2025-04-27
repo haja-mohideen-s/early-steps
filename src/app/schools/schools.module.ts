@@ -15,4 +15,6 @@ import { FormsModule } from '@angular/forms';
   ],
   exports: [ViewSchoolDetailsComponent, ListSchoolsComponent, SchoolCardComponent]
 })
-export class SchoolsModule { }
+export class SchoolsModule {
+
+}

@@ -10,36 +10,24 @@ import { Observable } from 'rxjs';
 })
 export class SchoolService {
   private http = inject(HttpClient);
-
   constructor() {
 
   }
 
-  baseUrl = environment.locationUrl;
-  schools: School[] = [];
   comparator: string = 'ILIKE';
 
-  getSchools(schoolName: string = '', schoolLocation: string = "", limit: number = 10): Observable<School> {
-    let url = this.buildUrl(environment.locationUrl, environment.datasetId, environment.datasetValue);
+  getSchools(schoolName: string = '', schoolLocation: string = "", limit: number = 10, offset: number = 0): Observable<School> {
+    let url = this.buildUrl(environment.locationUrl, environment.datasetId, environment.schoolDatasetValue);
     url = this.addFilterToUrl(url, '', schoolName, schoolLocation);
     url = this.addParameterToUrl(url, 'limit', limit);
+    url = this.addParameterToUrl(url, 'offset', offset);
     return this.http.get<School>(url);
   }
 
   getSchoolDetails(centreCode: string): Observable<School> {
-    let url = this.buildUrl(environment.locationUrl, environment.datasetId, environment.datasetValue);
+    let url = this.buildUrl(environment.locationUrl, environment.datasetId, environment.schoolDatasetValue);
     url = this.addFilterToUrl(url, centreCode);
     return this.http.get<School>(url);
-  }
-
-  buildUrl(locationUrl: string, datasetId: string, datasetValue: string): string {
-    return `${locationUrl}?${datasetId}=${datasetValue}`;
-  }
-
-  addParameterToUrl(url: string, parameter: string, value: any): string {
-    const urlObj = new URL(url);
-    urlObj.searchParams.set(parameter, value.toString());
-    return urlObj.toString();
   }
 
   addFilterToUrl(url: string, centre_code: string = '', centre_name: string = '', centre_address: string = ''): string {
@@ -60,6 +48,16 @@ export class SchoolService {
       }
     };
     urlObj.searchParams.set("filters", JSON.stringify(filter));
+    return urlObj.toString();
+  }
+
+  buildUrl(locationUrl: string, datasetId: string, datasetValue: string): string {
+    return `${locationUrl}?${datasetId}=${datasetValue}`;
+  }
+
+  addParameterToUrl(url: string, parameter: string, value: any): string {
+    const urlObj = new URL(url);
+    urlObj.searchParams.set(parameter, value.toString());
     return urlObj.toString();
   }
 }

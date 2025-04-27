@@ -6,16 +6,11 @@
                     [(ngModel)]="searchSchoolName" (change)="refreshData()"
                     class="h-12 border border-gray-300 text-gray-900 text-base font-normal leading-7 rounded-full block w-full py-2.5 px-4 appearance-none relative focus:outline-none bg-white transition-all duration-500 hover:border-gray-400 hover:bg-gray-50 focus-within:bg-gray-50">
             </li>
-
             <li class="flex items-center cursor-pointer outline-none group">
                 <input type="text" id="searchByLocation" placeholder="Search by Location"
                     [(ngModel)]="searchSchoolLocation" (change)="refreshData()"
                     class="h-12 border border-gray-300 text-gray-900 text-base font-normal leading-7 rounded-full block w-full py-2.5 px-4 appearance-none relative focus:outline-none bg-white transition-all duration-500 hover:border-gray-400 hover:bg-gray-50 focus-within:bg-gray-50">
             </li>
-
-            <!-- <li class="flex items-center cursor-pointer outline-none group">
-
-            </li> -->
         </ul>
         <div class="relative w-full max-w-sm">
             <select id="pageSize" (change)="refreshData()" [(ngModel)]="pageSize"
@@ -41,7 +36,9 @@
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2 dark:bg-gray-900 justify-items-center">
 
     @for (school of schools?.result?.records; track school.centre_code) {
+    @if(school.centre_name != 'na'){
     <app-school-card [school]="school"></app-school-card>
+    }
     }
 
 </div>
@@ -52,3 +49,25 @@
     No items present
 </div>
 }
+
+<div class="flex justify-between items-center space-x-2 my-4 ">
+    <div>
+        <!-- Previous Button -->
+        <button id="prev-button"
+            class="px-4 mx-2 py-2 cursor-pointer bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+            (click)="goToPreviousPage()">
+            Previous
+        </button>
+        &nbsp;
+        <!-- Next Button -->
+        <button id="next-button"
+            class="px-4 mx-2 py-2 cursor-pointer bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+            (click)="goToNextPage()">
+            Next
+        </button>
+    </div>
+    <div class="px-1">
+        Displaying page <span id="spnCurrentPage">{{currentPage}}</span> of <span
+            id="spnTotalPage">{{totalPages}}</span>
+    </div>
+</div>

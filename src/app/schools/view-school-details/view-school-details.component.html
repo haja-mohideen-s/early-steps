@@ -30,7 +30,7 @@
         <br /><br />
         <span class="text-white"> Information last updated on {{record.last_updated}}</span>
         <br />
-        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 md:grid-cols-2 xl:grid-cols-3">
+        <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             <div class="space-y-3">
                 <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
                     Centre Information
@@ -68,6 +68,8 @@
 
             </div>
 
+
+
             <div class="space-y-3">
                 <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
                     Vacancy Information
@@ -78,6 +80,29 @@
                 <div [innerHTML]="this.getVacancyStatus(record.n2_vacancy_current_month,'N2')"></div>
                 <div [innerHTML]="this.getVacancyStatus(record.k1_vacancy_current_month,'K1')"></div>
                 <div [innerHTML]="this.getVacancyStatus(record.k2_vacancy_current_month,'K2')"></div>
+            </div>
+
+            <div class="space-y-3">
+                <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
+                    Working Hours
+                </span>
+
+                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Weekday full day</h2>
+                <p class="text-gray-500 dark:text-gray-300">
+                    {{record.weekday_full_day}}
+                </p>
+
+                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Saturday</h2>
+                <p class="text-gray-500 dark:text-gray-300">
+                    {{record.saturday}}
+                </p>
+
+                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Extended Operating Hours</h2>
+                <p class="text-gray-500 dark:text-gray-300">
+                    {{record.extended_operating_hours}}
+                </p>
+
+
             </div>
 
             <div class="space-y-3">
@@ -105,27 +130,67 @@
                     {{record.government_subsidy}}
                 </p>
             </div>
-
-            <div class="space-y-3">
+            <div class="space-y-3 col-span-1 sm:col-span-2">
                 <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
-                    Working Hours
+                    License &amp; Fees
                 </span>
 
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Weekday full day</h2>
-                <p class="text-gray-500 dark:text-gray-300">
-                    {{record.weekday_full_day}}
-                </p>
+                <div class="relative overflow-x-auto">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Level
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Type of service
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Citizenship
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Fees
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Last updated
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if(schoolFees?.result?.records != undefined && schoolFees?.result?.records!.length > 0){
+                            @for (fees of schoolFees?.result?.records; track fees._id) {
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <td class="px-6 py-4">
+                                    {{fees.levels_offered}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{fees.type_of_service}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{fees.type_of_citizenship}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ `$${fees.fees}`}}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{fees.last_updated}}
+                                </td>
+                            </tr>
+                            }
+                            }
+                            @else
+                            {
+                            <tr>
+                                <td colspan="5">
+                                    No fee information available
+                                </td>
+                            </tr>
+                            }
 
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Saturday</h2>
-                <p class="text-gray-500 dark:text-gray-300">
-                    {{record.saturday}}
-                </p>
 
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Extended Operating Hours</h2>
-                <p class="text-gray-500 dark:text-gray-300">
-                    {{record.extended_operating_hours}}
-                </p>
-
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
         </div>
