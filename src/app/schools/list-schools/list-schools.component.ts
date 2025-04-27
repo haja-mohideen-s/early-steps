@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SchoolService } from '../school.service';
 import { School } from '../../models/school';
-import { SchoolCardComponent } from '../school-card/school-card.component';
 
 
 @Component({
@@ -13,13 +12,23 @@ import { SchoolCardComponent } from '../school-card/school-card.component';
 export class ListSchoolsComponent implements OnInit {
 
   schools: School | undefined;
+
+  searchSchoolName: string = '';
+  searchSchoolLocation: string = '';
+  pageSize: number = 10;
+
   constructor(private schoolService: SchoolService) {
 
   }
   ngOnInit(): void {
     this.schoolService.getSchools().subscribe(data => {
       this.schools = data;
-      console.log(this.schools);
+    });
+  }
+
+  refreshData() {
+    this.schoolService.getSchools(this.searchSchoolName, this.searchSchoolLocation, this.pageSize).subscribe(data => {
+      this.schools = data;
     });
   }
 }

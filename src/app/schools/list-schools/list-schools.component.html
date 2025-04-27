@@ -1,3 +1,42 @@
+<div class="w-full max-w-7xl mx-auto p-4 md:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-center max-lg:gap-4 justify-between w-full">
+        <ul class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12">
+            <li class="flex items-center cursor-pointer outline-none group">
+                <input type="text" id="searchBySchoolName" placeholder="Search by School name"
+                    [(ngModel)]="searchSchoolName" (change)="refreshData()"
+                    class="h-12 border border-gray-300 text-gray-900 text-base font-normal leading-7 rounded-full block w-full py-2.5 px-4 appearance-none relative focus:outline-none bg-white transition-all duration-500 hover:border-gray-400 hover:bg-gray-50 focus-within:bg-gray-50">
+            </li>
+
+            <li class="flex items-center cursor-pointer outline-none group">
+                <input type="text" id="searchByLocation" placeholder="Search by Location"
+                    [(ngModel)]="searchSchoolLocation" (change)="refreshData()"
+                    class="h-12 border border-gray-300 text-gray-900 text-base font-normal leading-7 rounded-full block w-full py-2.5 px-4 appearance-none relative focus:outline-none bg-white transition-all duration-500 hover:border-gray-400 hover:bg-gray-50 focus-within:bg-gray-50">
+            </li>
+
+            <!-- <li class="flex items-center cursor-pointer outline-none group">
+
+            </li> -->
+        </ul>
+        <div class="relative w-full max-w-sm">
+            <select id="pageSize" (change)="refreshData()" [(ngModel)]="pageSize"
+                class="h-12 border border-gray-300 text-gray-900 pl-11 text-base font-normal leading-7 rounded-full block w-full py-2.5 px-4 appearance-none relative focus:outline-none bg-white transition-all duration-500 hover:border-gray-400 hover:bg-gray-50 focus-within:bg-gray-50">
+                <option value="10">Load results (10)</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+            <svg class="absolute top-1/2 -translate-y-1/2 right-4 z-50" width="16" height="16" viewBox="0 0 16 16"
+                fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.0002 5.99845L8.00008 9.99862L3.99756 5.99609" stroke="#111827" stroke-width="1.6"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </div>
+    </div>
+    <svg class="my-7 w-full" xmlns="http://www.w3.org/2000/svg" width="1216" height="2" viewBox="0 0 1216 2"
+        fill="none">
+        <path d="M0 1H1216" stroke="#E5E7EB" />
+    </svg>
+</div>
 @if(schools?.result?.records != undefined && schools?.result?.records!.length > 0){
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2 dark:bg-gray-900 justify-items-center">
 

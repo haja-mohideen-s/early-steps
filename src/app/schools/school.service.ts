@@ -19,8 +19,9 @@ export class SchoolService {
   schools: School[] = [];
   comparator: string = 'ILIKE';
 
-  getSchools(limit: number = 10): Observable<School> {
+  getSchools(schoolName: string = '', schoolLocation: string = "", limit: number = 10): Observable<School> {
     let url = this.buildUrl(environment.locationUrl, environment.datasetId, environment.datasetValue);
+    url = this.addFilterToUrl(url, '', schoolName, schoolLocation);
     url = this.addParameterToUrl(url, 'limit', limit);
     return this.http.get<School>(url);
   }
@@ -41,12 +42,21 @@ export class SchoolService {
     return urlObj.toString();
   }
 
-  addFilterToUrl(url: string, value: any): string {
+  addFilterToUrl(url: string, centre_code: string = '', centre_name: string = '', centre_address: string = ''): string {
     const urlObj = new URL(url);
+
     const filter: SearchFilter = {
       centre_code: {
         type: this.comparator,
-        value: value
+        value: centre_code
+      },
+      centre_name: {
+        type: this.comparator,
+        value: centre_name
+      },
+      centre_address: {
+        type: this.comparator,
+        value: centre_address
       }
     };
     urlObj.searchParams.set("filters", JSON.stringify(filter));
