@@ -27,13 +27,34 @@
             </svg>
         </div>
     </div>
-    <svg class="my-7 w-full" xmlns="http://www.w3.org/2000/svg" width="1216" height="2" viewBox="0 0 1216 2"
+    <svg class="my-4 w-full" xmlns="http://www.w3.org/2000/svg" width="1216" height="2" viewBox="0 0 1216 2"
         fill="none">
         <path d="M0 1H1216" stroke="#E5E7EB" />
     </svg>
 </div>
+<div class="flex justify-between items-center space-x-2 my-2 px-4">
+    <div>
+        <!-- Previous Button -->
+        <button id="prev-button"
+            class="px-4 mx-2 py-2 cursor-pointer bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+            (click)="goToPreviousPage()">
+            Previous
+        </button>
+        &nbsp;
+        <!-- Next Button -->
+        <button id="next-button"
+            class="px-4 mx-2 py-2 cursor-pointer bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+            (click)="goToNextPage()">
+            Next
+        </button>
+    </div>
+    <div class="pr-1">
+        Displaying page <span>{{currentPage}}</span> of <span>{{totalPages}}</span>
+    </div>
+</div>
+
 @if(schools?.result?.records != undefined && schools?.result?.records!.length > 0){
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2 dark:bg-gray-900 justify-items-center">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2 px-4 bg-gray-900 justify-items-center">
 
     @for (school of schools?.result?.records; track school.centre_code) {
     @if(school.centre_name != 'na'){
@@ -50,7 +71,7 @@
 </div>
 }
 
-<div class="flex justify-between items-center space-x-2 my-4 ">
+<div class="flex justify-between items-center space-x-2 my-4 px-4">
     <div>
         <!-- Previous Button -->
         <button id="prev-button"
@@ -66,8 +87,7 @@
             Next
         </button>
     </div>
-    <div class="px-1">
-        Displaying page <span id="spnCurrentPage">{{currentPage}}</span> of <span
-            id="spnTotalPage">{{totalPages}}</span>
+    <div class="pr-1">
+        Displaying page <span>{{currentPage}}</span> of <span>{{totalPages}}</span>
     </div>
 </div>

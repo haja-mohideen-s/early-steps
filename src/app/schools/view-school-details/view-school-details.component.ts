@@ -24,6 +24,7 @@ export class ViewSchoolDetailsComponent implements OnInit {
   schoolFees: SchoolFees | any;
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.centreCode = this.route.snapshot.paramMap.get('code') || '';
     this.schoolService.getSchoolDetails(this.centreCode).subscribe(data => {
       this.schoolDetails = data;

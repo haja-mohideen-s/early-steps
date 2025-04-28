@@ -1,11 +1,11 @@
-<section class="bg-white dark:bg-gray-900">
+<section class="bg-gray-900">
     <div class="container px-6 py-10 mx-auto">
-        <h1 class="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">{{ record.centre_name }}
+        <h1 class="text-2xl font-semibold capitalize lg:text-3xl text-white">{{ record.centre_name }}
         </h1>
         @if(record.centre_website != 'na')
         {
         <a href="//{{record.centre_website}}" target="_blank"
-            class="inline-flex items-center -mx-1 text-sm text-blue-500 capitalize transition-colors duration-300 transform dark:text-blue-400 hover:underline hover:text-blue-600 dark:hover:text-blue-500">
+            class="inline-flex items-center -mx-1 text-sm capitalize transition-colors duration-300 transform text-blue-400 hover:underline hover:text-blue-500">
             <span class="mx-1">Visit school website</span>
             <svg class="w-4 h-4 mx-1 rtl:-scale-x-100" fill="currentColor" viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg">
@@ -16,7 +16,7 @@
         </a>
         }
 
-        <p class="mt-4 text-gray-500 xl:mt-6 dark:text-gray-300">
+        <p class="mt-4 xl:mt-6 text-gray-300">
             {{record.centre_address}}<br /><br /></p>
         <a href="tel:+65{{record.centre_contact_no}}"
             class="p-4 inline-grid place-items-center border align-middle select-none font-sans font-medium text-center transition-all duration-300 ease-in disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-lg min-w-[38px] min-h-[38px] rounded-md shadow-sm hover:shadow-md bg-green-500 border-green-500 text-green-50 hover:bg-success-light hover:border-success-light">
@@ -32,46 +32,36 @@
         <br />
         <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             <div class="space-y-3">
-                <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
+                <span class="inline-block p-3 rounded-full text-white bg-blue-500">
                     Centre Information
                 </span>
-
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Centre Code</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Centre Code</h2>
+                <p class="text-gray-300">
                     {{record.centre_code}}
                 </p>
-
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Service Model</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Service Model</h2>
+                <p class="text-gray-300">
                     {{record.service_model}}
                 </p>
-
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Spark Certification</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Spark Certification</h2>
+                <p class="text-gray-300">
                     {{record.spark_certified}}
                 </p>
-
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Org. Code</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Org. Code</h2>
+                <p class="text-gray-300">
                     {{record.organisation_code}}
                 </p>
-
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Org. Desc</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Org. Desc</h2>
+                <p class="text-gray-300">
                     {{record.organisation_description}}
                 </p>
-
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Scheme Type</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Scheme Type</h2>
+                <p class="text-gray-300">
                     {{record.scheme_type}}
                 </p>
-
             </div>
-
-
-
             <div class="space-y-3">
-                <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
+                <span class="inline-block p-3 rounded-full text-white bg-blue-500">
                     Vacancy Information
                 </span> <br />
                 <div [innerHTML]="this.getVacancyStatus(record.infant_vacancy_current_month,'Infant Care')"></div>
@@ -83,61 +73,53 @@
             </div>
 
             <div class="space-y-3">
-                <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
+                <span class="inline-block p-3 rounded-full text-white bg-blue-500">
                     Working Hours
                 </span>
 
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Weekday full day</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Weekday full day</h2>
+                <p class="text-gray-300">
                     {{record.weekday_full_day}}
                 </p>
 
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Saturday</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Saturday</h2>
+                <p class="text-gray-300">
                     {{record.saturday}}
                 </p>
 
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Extended Operating Hours</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Extended Operating Hours</h2>
+                <p class="text-gray-300">
                     {{record.extended_operating_hours}}
                 </p>
-
-
             </div>
-
             <div class="space-y-3">
-                <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
+                <span class="inline-block p-3 rounded-full text-white bg-blue-500">
                     Other Information
                 </span>
-
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Second languages offered</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Second languages offered</h2>
+                <p class="text-gray-300">
                     {{record.second_languages_offered}}
                 </p>
-
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Food options</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Food options</h2>
+                <p class="text-gray-300">
                     {{record.food_offered}}
                 </p>
-
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Transport offered</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Transport offered</h2>
+                <p class="text-gray-300">
                     {{record.provision_of_transport}}
                 </p>
-
-                <h2 class="text-xl font-semibold text-gray-700 capitalize dark:text-white">Govt. Subsidy offered</h2>
-                <p class="text-gray-500 dark:text-gray-300">
+                <h2 class="text-xl font-semibold capitalize text-white">Govt. Subsidy offered</h2>
+                <p class="text-gray-300">
                     {{record.government_subsidy}}
                 </p>
             </div>
             <div class="space-y-3 col-span-1 sm:col-span-2">
-                <span class="inline-block p-3 text-blue-500 bg-blue-100 rounded-full dark:text-white dark:bg-blue-500">
+                <span class="inline-block p-3 rounded-full text-white bg-blue-500">
                     License &amp; Fees
                 </span>
-
                 <div class="relative overflow-x-auto">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-400">
+                        <thead class="text-xs uppercase bg-gray-700 text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     Level
@@ -159,7 +141,7 @@
                         <tbody>
                             @if(schoolFees?.result?.records != undefined && schoolFees?.result?.records!.length > 0){
                             @for (fees of schoolFees?.result?.records; track fees._id) {
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                            <tr class="border-b bg-gray-800 border-gray-700">
                                 <td class="px-6 py-4">
                                     {{fees.levels_offered}}
                                 </td>
@@ -186,12 +168,9 @@
                                 </td>
                             </tr>
                             }
-
-
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </div>
     </div>
