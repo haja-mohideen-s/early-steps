@@ -1,3 +1,7 @@
+<div class="w-full bg-center bg-cover bg-[url(/assets/images/hero.jpg)] md:h-[390px] xl:h-[320px] h-[550px]">
+    <div class="bg-white/30 backdrop-blur-sm h-full" id="map">
+    </div>
+</div>
 <section class="bg-gray-900">
     <div class="container px-6 py-10 mx-auto">
         <h1 class="text-2xl font-semibold capitalize lg:text-3xl text-white">{{ record.centre_name }}
@@ -117,7 +121,13 @@
                 <span class="inline-block p-3 rounded-full text-white bg-blue-500">
                     License &amp; Fees
                 </span>
-                <div class="relative overflow-x-auto">
+                <div class="relative overflow-scroll h-[400px]">
+                    <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+                        role="alert">
+                        <span class="font-medium">ℹ️ Info: </span>
+                        The fee presented below is dervied from ECDA data. There could be additional fees
+                        applicable. Please contact the school directly for more accurate data.
+                    </div>
                     <table class="w-full text-sm text-left rtl:text-right text-gray-400">
                         <thead class="text-xs uppercase bg-gray-700 text-gray-400">
                             <tr>
@@ -125,17 +135,15 @@
                                     Level
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Type of service
-                                </th>
-                                <th scope="col" class="px-6 py-3">
                                     Citizenship
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Fees
+                                    Fees <br />
+                                    (Last updated on)
                                 </th>
-                                <th scope="col" class="px-6 py-3">
+                                <!-- <th scope="col" class="px-6 py-3">
                                     Last updated
-                                </th>
+                                </th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -143,27 +151,28 @@
                             @for (fees of schoolFees?.result?.records; track fees._id) {
                             <tr class="border-b bg-gray-800 border-gray-700">
                                 <td class="px-6 py-4">
-                                    {{fees.levels_offered}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{fees.type_of_service}}
+                                    {{fees.levels_offered}} <br />
+                                    <span class="text-white">{{fees.type_of_service}}</span>
                                 </td>
                                 <td class="px-6 py-4">
                                     {{fees.type_of_citizenship}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ `$${fees.fees}`}}
+                                    <span class="text-green-500">
+                                        {{ fees.fees | currency }}
+                                    </span><br />
+                                    <span class="text-gray-400">({{ fees.last_updated }})</span>
                                 </td>
-                                <td class="px-6 py-4">
+                                <!-- <td class="px-6 py-4">
                                     {{fees.last_updated}}
-                                </td>
+                                </td> -->
                             </tr>
                             }
                             }
                             @else
                             {
                             <tr>
-                                <td colspan="5">
+                                <td colspan="3">
                                     No fee information available
                                 </td>
                             </tr>
