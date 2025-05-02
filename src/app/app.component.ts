@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { SiteFrameworkModule } from "./site-framework/site-framework.module";
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, SiteFrameworkModule, FormsModule],
@@ -10,5 +11,5 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Early Steps - Preschool finder - Singapore';
+  title = 'SGPreschools.com - A comprehensive preschool finder for Singapore';
 }

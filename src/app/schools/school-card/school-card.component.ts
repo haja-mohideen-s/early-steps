@@ -1,6 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { Record } from '../../models/school';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 

@@ -1,3 +1,4 @@
+<app-hero-lander></app-hero-lander>
 <div class="w-full max-w-7xl mx-auto p-4 md:px-8">
     <div class="flex flex-col lg:flex-row lg:items-center max-lg:gap-4 justify-between w-full">
         <ul class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-12">
@@ -49,12 +50,13 @@
         </button>
     </div>
     <div class="pr-1">
-        Displaying page <span>{{currentPage}}</span> of <span>{{totalPages}}</span>
+        Page <span>{{currentPage}}</span> of <span>{{totalPages}}</span>
     </div>
 </div>
 
 @if(schools?.result?.records != undefined && schools?.result?.records!.length > 0){
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-2 px-4 bg-gray-900 justify-items-center">
+<div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 2xl:grid-cols-5 mt-2 px-4 bg-gray-900 justify-items-center">
 
     @for (school of schools?.result?.records; track school.centre_code) {
     @if(school.centre_name != 'na'){
@@ -67,7 +69,7 @@
 @else
 {
 <div>
-    No items present
+    No school data present. Please remove any filters or try again after some time.
 </div>
 }
 
@@ -88,6 +90,6 @@
         </button>
     </div>
     <div class="pr-1">
-        Displaying page <span>{{currentPage}}</span> of <span>{{totalPages}}</span>
+        Page <span>{{currentPage}}</span> of <span>{{totalPages}}</span>
     </div>
 </div>

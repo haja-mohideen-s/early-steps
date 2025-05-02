@@ -1,9 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SchoolService } from '../school.service';
 import { Record, School } from '../../models/school';
 import { SchoolFees } from '../../models/schoolFees';
 import { FeesService } from '../fees.service';
+import * as L from 'leaflet';
+import { AddressService } from '../address.service';
 
 
 @Component({
@@ -17,6 +19,7 @@ export class ViewSchoolDetailsComponent implements OnInit {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly schoolService = inject(SchoolService);
   private readonly feeService = inject(FeesService);
+  private readonly addressService = inject(AddressService);
 
   centreCode: string = '';
   schoolDetails: School | any;
@@ -29,11 +32,12 @@ export class ViewSchoolDetailsComponent implements OnInit {
     this.schoolService.getSchoolDetails(this.centreCode).subscribe(data => {
       this.schoolDetails = data;
       this.record = this.schoolDetails?.result?.records[0];
+      this.initMap(this.record);
+
     });
     this.feeService.getSchoolFees(this.centreCode).subscribe(data => {
       this.schoolFees = data;
     });
-    // this.loadMap();
   }
 
   getVacancyStatus(status: string, departmentName: string): string {
@@ -56,24 +60,36 @@ export class ViewSchoolDetailsComponent implements OnInit {
     return div.outerHTML;
   }
 
-  // loadMap() {
-  //   const datasetId = "d_5d668e3f544335f8028f546827b773b4"
-  //   const url = "https://api-open.data.gov.sg/v1/public/api/datasets/" + datasetId + "/poll-download";
+  private initMap(data: Record): void {
+    const map = L.map('map', {
+      center: L.latLng(1.2868108, 103.8545349),
+      zoom: 16
+    });
 
-  //   try {
-  //     fetch(url).then(data => {
-  //       if (data.ok) {
-  //         data.json().then(res => {
-  //           const jsonData = res;
-  //           fetch(jsonData['data']['url']).then(pos => {
-  //             console.log(pos);
-  //           });
-  //         });
-  //       }
-  //     });
+    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      minZoom: 3,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
 
-  //   } catch (e) {
-  //     console.error(e);
-  //   }
-  // }
+    // container for address search results
+    const addressSearchResults = new L.LayerGroup().addTo(map);
+
+    let addresses;
+    let addressPin;
+
+    this.showMap(data, addresses, map);
+    tiles.addTo(map);
+  }
+
+  private showMap(data: Record, addresses: any, map: L.Map) {
+    this.addressService.getLocation(data.centre_code).subscribe(item => {
+      addresses = item;
+      console.log(addresses);
+      map.setView([addresses.latitude, addresses.longitude], 16);
+      L.marker([addresses.latitude, addresses.longitude]).addTo(map)
+        .bindPopup(`<b>${data.centre_name}</b>`).openPopup();
+    });
+    return addresses;
+  }
 }
