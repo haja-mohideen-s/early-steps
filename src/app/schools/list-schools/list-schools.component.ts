@@ -19,6 +19,7 @@ export class ListSchoolsComponent implements OnInit {
   currentPage: number = 1;
   totalRecords: number = 0;
   totalPages: number = 0;
+  showLoading: boolean = false;
 
   offset: number = 0;
 
@@ -35,18 +36,21 @@ export class ListSchoolsComponent implements OnInit {
 
   refreshData() {
     this.currentPage = 1;
+    this.showLoading = true;
     this.schoolService.getSchools(this.searchSchoolName, this.searchSchoolLocation, this.pageSize).subscribe(data => {
       this.schools = data;
       this.totalRecords = this.schools.result.total;
       this.totalPages = Math.ceil(this.totalRecords / this.pageSize);
+      setTimeout(() => { this.showLoading = false; }, 500);
     });
   }
 
   reloadPageData() {
+    this.showLoading = true;
     this.offset = (this.currentPage - 1) * this.pageSize;
     this.schoolService.getSchools(this.searchSchoolName, this.searchSchoolLocation, this.pageSize, this.offset).subscribe(data => {
       this.schools = data;
-      console.log(this.currentPage);
+      setTimeout(() => { this.showLoading = false; }, 500);
     });
   }
 

@@ -72,24 +72,19 @@ export class ViewSchoolDetailsComponent implements OnInit {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
 
-    // container for address search results
     const addressSearchResults = new L.LayerGroup().addTo(map);
-
-    let addresses;
-    let addressPin;
-
-    this.showMap(data, addresses, map);
+    this.showMap(data, map);
     tiles.addTo(map);
   }
 
-  private showMap(data: Record, addresses: any, map: L.Map) {
+  private showMap(data: Record, map: L.Map) {
     this.addressService.getLocation(data.centre_code).subscribe(item => {
-      addresses = item;
-      console.log(addresses);
-      map.setView([addresses.latitude, addresses.longitude], 16);
-      L.marker([addresses.latitude, addresses.longitude]).addTo(map)
-        .bindPopup(`<b>${data.centre_name}</b>`).openPopup();
+      const addresses = item;
+      if (addresses.latitude != 0) {
+        map.setView([addresses.latitude, addresses.longitude], 16);
+        L.marker([addresses.latitude, addresses.longitude]).addTo(map)
+          .bindPopup(`<b>${data.centre_name}</b>`).openPopup();
+      }
     });
-    return addresses;
   }
 }

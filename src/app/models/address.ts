@@ -12,3 +12,8 @@ export interface Address {
     display_name: string;
     boundingbox: string[];
 }
+
+export interface GeoCoordinates {
+    latitude: number;
+    longitude: number;
+}

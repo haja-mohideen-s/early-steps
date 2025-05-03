@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
-import { Address } from '../models/address';
+import { Address, GeoCoordinates } from '../models/address';
 
 
 @Injectable({
@@ -15,8 +15,8 @@ export class AddressService {
 
   }
 
-  getLocation(postalCode: string): Observable<Address[]> {
+  getLocation(postalCode: string): Observable<GeoCoordinates> {
     const url = `${environment.onemapUrl}${postalCode}`;
-    return this.http.get<Address[]>(url);
+    return this.http.get<GeoCoordinates>(url);
   }
 }
