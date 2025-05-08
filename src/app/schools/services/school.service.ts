@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.development';
-import { School } from '../models/school';
-import { SearchFilter } from '../models/searchFilter';
+import { environment } from '../../../environments/environment.development';
+import { School } from '../../models/school';
+import { SearchFilter } from '../../models/searchFilter';
 import { Observable } from 'rxjs';
 
 @Injectable({

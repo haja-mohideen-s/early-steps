@@ -3,16 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { HeroLanderComponent } from '../schools/hero-lander/hero-lander.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, SidebarComponent],
+  declarations: [HeaderComponent, FooterComponent, SidebarComponent, CarouselComponent],
   imports: [
     CommonModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent]
+    SidebarComponent,
+    CarouselComponent]
 })
-export class SiteFrameworkModule { }
+export class LayoutModule { }

@@ -40,4 +40,16 @@ export class SchoolCardComponent {
     btn.textContent = btnText;
     return btn.outerHTML;
   }
+
+  normaliseUrl(url: string): string {
+    //if https missing, add it
+    // if (url && url.startsWith('https//')) {
+    //   //replace https// with https://
+    //   return url.replace('https//', 'https://');
+    // }
+    if (url && url.startsWith('www.')) {
+      return url = 'https://' + url;
+    }
+    return url;
+  }
 }

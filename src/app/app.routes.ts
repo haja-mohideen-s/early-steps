@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { ViewSchoolDetailsComponent } from './schools/view-school-details/view-school-details.component';
-import { ListSchoolsComponent } from './schools/list-schools/list-schools.component';
+import { SchoolListingsComponent } from './schools/school-listings/school-listings.component';
 
 export const routes: Routes = [
     { path: 'view-school-details/:code', component: ViewSchoolDetailsComponent },
-    { path: '', component: ListSchoolsComponent }
+    { path: '', component: SchoolListingsComponent }
 ];

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { SchoolService } from '../school.service';
+import { SchoolService } from '../services/school.service';
 import { School } from '../../models/school';
 
 
 @Component({
-  selector: 'app-list-schools',
+  selector: 'app-school-listings',
   standalone: false,
-  templateUrl: './list-schools.component.html',
-  styleUrl: './list-schools.component.css'
+  templateUrl: './school-listings.component.html',
+  styleUrl: './school-listings.component.css'
 })
-export class ListSchoolsComponent implements OnInit {
+export class SchoolListingsComponent implements OnInit {
 
   schools: School | undefined;
 

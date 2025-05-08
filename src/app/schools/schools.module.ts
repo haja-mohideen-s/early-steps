@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewSchoolDetailsComponent } from './view-school-details/view-school-details.component';
-import { ListSchoolsComponent } from './list-schools/list-schools.component';
+import { SchoolListingsComponent } from './school-listings/school-listings.component';
 import { SchoolCardComponent } from './school-card/school-card.component';
 import { FormsModule } from '@angular/forms';
-import { HeroLanderComponent } from './hero-lander/hero-lander.component';
+import { CarouselComponent } from '../layout/carousel/carousel.component';
 import { RouterModule } from '@angular/router';
+import { LayoutModule } from '../layout/layout.module';
 
 
 
 @NgModule({
-  declarations: [ViewSchoolDetailsComponent, ListSchoolsComponent, SchoolCardComponent, HeroLanderComponent],
+  declarations: [ViewSchoolDetailsComponent, SchoolListingsComponent, SchoolCardComponent],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    LayoutModule
   ],
-  exports: [ViewSchoolDetailsComponent, ListSchoolsComponent, SchoolCardComponent, HeroLanderComponent]
+  exports: [ViewSchoolDetailsComponent, SchoolListingsComponent, SchoolCardComponent]
 })
 export class SchoolsModule {
 

@@ -33,12 +33,21 @@
                         🔗
                     </button>
                 </div>
-                <p class="col-span-3 text-gray-400"><a href="//{{school.centre_website}}"
+                <p class="col-span-3 text-gray-400">
+                    @if(school.centre_website != 'na'){
+                    <a [href]="normaliseUrl(school.centre_website)" target="_blank"
                         class="inline-flex items-center font-medium text-blue-500 hover:underline">
                         Visit website
-                    </a></p>
-
-                <p class="col-span-2 text-gray-400"><a href="//{{school.centre_website}}"
+                    </a>
+                    }
+                    @else{
+                    <a href="https://www.google.com/search?q={{school.centre_name}}" target="_blank"
+                        class="inline-flex items-center font-medium text-blue-500 hover:underline">
+                        Google
+                    </a>
+                    }
+                </p>
+                <p class="col-span-2 text-gray-400"><a href="mailto:{{school.centre_email_address}}"
                         class="inline-flex items-center font-medium text-blue-500 hover:underline">
                         ✉️ Email
                     </a></p>
@@ -49,7 +58,7 @@
             </div>
 
             <div class="w-full pt-4 pb-1.5 rounded flex flex-row items-center justify-center">
-                <a [routerLink]="['/view-school-details', school.centre_code]"
+                <a [routerLink]="['/view-school-details', school.centre_code]" target="_blank"
                     class="secondary w-24 px-3 py-2 text-white h-10 rounded-sm cursor-pointer">
                     More Info
                 </a>

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../environments/environment.development';
-import { SearchFilter } from '../models/searchFilter';
+import { environment } from '../../../environments/environment.development';
+import { SearchFilter } from '../../models/searchFilter';
 import { Observable } from 'rxjs';
-import { SchoolFees } from '../models/schoolFees';
+import { SchoolFees } from '../../models/schoolFees';
 
 
 @Injectable({

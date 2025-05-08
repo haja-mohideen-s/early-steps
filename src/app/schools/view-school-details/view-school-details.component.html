@@ -1,5 +1,5 @@
 <div class="w-full bg-center bg-cover bg-[url(/assets/images/hero.jpg)] md:h-[390px] xl:h-[320px] h-[550px]">
-    <div class="bg-white/30 backdrop-blur-sm h-full" id="map">
+    <div class="backdrop-blur-xs h-full" id="map">
     </div>
 </div>
 <section class="bg-gray-900">
@@ -34,6 +34,51 @@
         <br /><br />
         <span class="text-white"> Information last updated on {{record.last_updated}}</span>
         <br />
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-2  border-y-2 py-2 my-2 border-y-white">
+            <div class="p-2 justify-items-center">1
+                <img src="./assets/images/Anchor.png" class="h-[72px] w-[72px]"
+                    [ngClass]="{'grayscale': record.scheme_type != 'Anchor Operator Scheme' }" />
+                <br />
+                <span class="text-center font-semibold"
+                    [ngClass]="record.scheme_type != 'Anchor Operator Scheme' ? 'text-gray-700': 'text-white'">Anchor
+                    Operator</span>
+            </div>
+            <div class="p-2 justify-items-center">1
+                <img src="./assets/images/spark.png" [ngClass]="{'grayscale': record.spark_certified != 'Yes' }" />
+                <br />
+                <span class="text-center font-semibold"
+                    [ngClass]="record.spark_certified != 'Yes' ? 'text-gray-700': 'text-white'">Spark Certified</span>
+            </div>
+            <div class="p-2 justify-items-center">1
+                <img src="./assets/images/IG.png" class="h-[72px] w-[72px]"
+                    [ngClass]="{'grayscale': record.infant_vacancy_current_month == 'na' || record.infant_vacancy_current_month == 'Not Applicable' }" />
+                <br />
+                <span class="text-center font-semibold"
+                    [ngClass]="record.infant_vacancy_current_month == 'na' || record.infant_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Infant
+                    Care</span>
+            </div>
+            <div class="p-2 justify-items-center">1
+                <img src="./assets/images/PG.png" class="h-[72px] w-[72px]"
+                    [ngClass]="{'grayscale': record.pg_vacancy_current_month == 'na' || record.pg_vacancy_current_month == 'Not Applicable' }" />
+                <br />
+                <span class="text-center font-semibold"
+                    [ngClass]="record.pg_vacancy_current_month == 'na' || record.pg_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Playgroup</span>
+            </div>
+            <div class="p-2 justify-items-center">1
+                <img src="./assets/images/NU.png" class="h-[72px] w-[72px]"
+                    [ngClass]="{'grayscale': record.n1_vacancy_current_month == 'na' || record.n1_vacancy_current_month == 'Not Applicable' }" />
+                <br />
+                <span class="text-center font-semibold"
+                    [ngClass]="record.n1_vacancy_current_month == 'na' || record.n1_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Nursery</span>
+            </div>
+            <div class="p-2 justify-items-center">1
+                <img src="./assets/images/KG.png" class="h-[72px] w-[72px]"
+                    [ngClass]="{'grayscale': record.k1_vacancy_current_month == 'na' || record.k1_vacancy_current_month == 'Not Applicable' }" />
+                <br />
+                <span class="text-center font-semibold"
+                    [ngClass]="record.k1_vacancy_current_month == 'na' || record.k1_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Kindergarten</span>
+            </div>
+        </div>
         <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             <div class="space-y-3">
                 <span class="inline-block p-3 rounded-full text-white bg-blue-500">
@@ -47,10 +92,6 @@
                 <p class="text-gray-300">
                     {{record.service_model}}
                 </p>
-                <h2 class="text-xl font-semibold capitalize text-white">Spark Certification</h2>
-                <p class="text-gray-300">
-                    {{record.spark_certified}}
-                </p>
                 <h2 class="text-xl font-semibold capitalize text-white">Org. Code</h2>
                 <p class="text-gray-300">
                     {{record.organisation_code}}
@@ -58,10 +99,6 @@
                 <h2 class="text-xl font-semibold capitalize text-white">Org. Desc</h2>
                 <p class="text-gray-300">
                     {{record.organisation_description}}
-                </p>
-                <h2 class="text-xl font-semibold capitalize text-white">Scheme Type</h2>
-                <p class="text-gray-300">
-                    {{record.scheme_type}}
                 </p>
             </div>
             <div class="space-y-3">

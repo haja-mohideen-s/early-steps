@@ -2,7 +2,7 @@ import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } fr
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { SiteFrameworkModule } from './site-framework/site-framework.module';
+import { LayoutModule } from './layout/layout.module';
 import { SchoolsModule } from './schools/schools.module';
 import { provideHttpClient } from '@angular/common/http';
 
@@ -10,7 +10,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    importProvidersFrom(SiteFrameworkModule, SchoolsModule),
+    importProvidersFrom(LayoutModule, SchoolsModule),
     provideHttpClient()
   ]
 };

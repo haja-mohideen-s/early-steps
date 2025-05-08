@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SchoolService } from '../school.service';
+import { SchoolService } from '../services/school.service';
 import { Record, School } from '../../models/school';
 import { SchoolFees } from '../../models/schoolFees';
-import { FeesService } from '../fees.service';
+import { FeesService } from '../services/fees.service';
 import * as L from 'leaflet';
-import { AddressService } from '../address.service';
+import { AddressService } from '../services/address.service';
 
 
 @Component({
