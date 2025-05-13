@@ -66,4 +66,8 @@ export class SchoolListingsComponent implements OnInit {
       this.reloadPageData();
     }
   }
+
+  goToMaps() {
+    window.location.href = '/map-view';
+  }
 }

@@ -4,7 +4,6 @@ import { ViewSchoolDetailsComponent } from './view-school-details/view-school-de
 import { SchoolListingsComponent } from './school-listings/school-listings.component';
 import { SchoolCardComponent } from './school-card/school-card.component';
 import { FormsModule } from '@angular/forms';
-import { CarouselComponent } from '../layout/carousel/carousel.component';
 import { RouterModule } from '@angular/router';
 import { LayoutModule } from '../layout/layout.module';
 

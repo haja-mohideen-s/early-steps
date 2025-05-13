@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { Observable } from 'rxjs';
 import { Address, GeoCoordinates } from '../../models/address';
+import { SchoolLocation } from '../../models/schoolLocation';
 
 
 @Injectable({
@@ -18,5 +19,10 @@ export class AddressService {
   getLocation(postalCode: string): Observable<GeoCoordinates> {
     const url = `${environment.onemapUrl}${postalCode}`;
     return this.http.get<GeoCoordinates>(url);
+  }
+
+  getAllLocations(): Observable<SchoolLocation[]> {
+    const url = `${environment.onemapUrl}`;
+    return this.http.get<SchoolLocation[]>(url);
   }
 }

@@ -4,11 +4,11 @@
 </div>
 <section class="bg-gray-900">
     <div class="container px-6 py-10 mx-auto">
-        <h1 class="text-2xl font-semibold capitalize lg:text-3xl text-white">{{ record.centre_name }}
+        <h1 class="text-2xl font-semibold capitalize lg:text-3xl text-white">{{ record?.centre_name }}
         </h1>
-        @if(record.centre_website != 'na')
+        @if(record?.centre_website != 'na')
         {
-        <a href="//{{record.centre_website}}" target="_blank"
+        <a href="//{{record?.centre_website}}" target="_blank"
             class="inline-flex items-center -mx-1 text-sm capitalize transition-colors duration-300 transform text-blue-400 hover:underline hover:text-blue-500">
             <span class="mx-1">Visit school website</span>
             <svg class="w-4 h-4 mx-1 rtl:-scale-x-100" fill="currentColor" viewBox="0 0 20 20"
@@ -21,62 +21,62 @@
         }
 
         <p class="mt-4 xl:mt-6 text-gray-300">
-            {{record.centre_address}}<br /><br /></p>
-        <a href="tel:+65{{record.centre_contact_no}}"
+            {{record?.centre_address}}<br /><br /></p>
+        <a href="tel:+65{{record?.centre_contact_no}}"
             class="p-4 inline-grid place-items-center border align-middle select-none font-sans font-medium text-center transition-all duration-300 ease-in disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-lg min-w-[38px] min-h-[38px] rounded-md shadow-sm hover:shadow-md bg-green-500 border-green-500 text-green-50 hover:bg-success-light hover:border-success-light">
-            <span class="text-xl md:text-2xl">☎️ +65{{record.centre_contact_no}}</span>
+            <span class="text-xl md:text-2xl">☎️ +65{{record?.centre_contact_no}}</span>
         </a>
         <br /><br />
-        <a href="mailto:{{record.centre_email_address}}"
+        <a href="mailto:{{record?.centre_email_address}}"
             class="p-4 inline-grid place-items-center border align-middle select-none font-sans font-medium text-center transition-all duration-300 ease-in disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-lg min-w-[38px] min-h-[38px] rounded-md shadow-sm hover:shadow-md bg-indigo-500 border-indigo-500 text-indigo-50 hover:bg-success-light hover:border-success-light">
-            <span class="text-xl md:text-2xl overflow-hidden text-ellipsis">✉️ {{record.centre_email_address}}</span>
+            <span class="text-xl md:text-2xl overflow-hidden text-ellipsis">✉️ {{record?.centre_email_address}}</span>
         </a>
         <br /><br />
-        <span class="text-white"> Information last updated on {{record.last_updated}}</span>
+        <span class="text-white"> Information last updated on {{record?.last_updated}}</span>
         <br />
         <div class="grid grid-cols-2 md:grid-cols-6 gap-2  border-y-2 py-2 my-2 border-y-white">
             <div class="p-2 justify-items-center">1
                 <img src="./assets/images/Anchor.png" class="h-[72px] w-[72px]"
-                    [ngClass]="{'grayscale': record.scheme_type != 'Anchor Operator Scheme' }" />
+                    [ngClass]="{'grayscale': record?.scheme_type != 'Anchor Operator Scheme' }" />
                 <br />
                 <span class="text-center font-semibold"
-                    [ngClass]="record.scheme_type != 'Anchor Operator Scheme' ? 'text-gray-700': 'text-white'">Anchor
+                    [ngClass]="record?.scheme_type != 'Anchor Operator Scheme' ? 'text-gray-700': 'text-white'">Anchor
                     Operator</span>
             </div>
             <div class="p-2 justify-items-center">1
-                <img src="./assets/images/spark.png" [ngClass]="{'grayscale': record.spark_certified != 'Yes' }" />
+                <img src="./assets/images/spark.png" [ngClass]="{'grayscale': record?.spark_certified != 'Yes' }" />
                 <br />
                 <span class="text-center font-semibold"
-                    [ngClass]="record.spark_certified != 'Yes' ? 'text-gray-700': 'text-white'">Spark Certified</span>
+                    [ngClass]="record?.spark_certified != 'Yes' ? 'text-gray-700': 'text-white'">Spark Certified</span>
             </div>
             <div class="p-2 justify-items-center">1
                 <img src="./assets/images/IG.png" class="h-[72px] w-[72px]"
-                    [ngClass]="{'grayscale': record.infant_vacancy_current_month == 'na' || record.infant_vacancy_current_month == 'Not Applicable' }" />
+                    [ngClass]="{'grayscale': record?.infant_vacancy_current_month == 'na' || record?.infant_vacancy_current_month == 'Not Applicable' }" />
                 <br />
                 <span class="text-center font-semibold"
-                    [ngClass]="record.infant_vacancy_current_month == 'na' || record.infant_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Infant
+                    [ngClass]="record?.infant_vacancy_current_month == 'na' || record?.infant_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Infant
                     Care</span>
             </div>
             <div class="p-2 justify-items-center">1
                 <img src="./assets/images/PG.png" class="h-[72px] w-[72px]"
-                    [ngClass]="{'grayscale': record.pg_vacancy_current_month == 'na' || record.pg_vacancy_current_month == 'Not Applicable' }" />
+                    [ngClass]="{'grayscale': record?.pg_vacancy_current_month == 'na' || record?.pg_vacancy_current_month == 'Not Applicable' }" />
                 <br />
                 <span class="text-center font-semibold"
-                    [ngClass]="record.pg_vacancy_current_month == 'na' || record.pg_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Playgroup</span>
+                    [ngClass]="record?.pg_vacancy_current_month == 'na' || record?.pg_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Playgroup</span>
             </div>
             <div class="p-2 justify-items-center">1
                 <img src="./assets/images/NU.png" class="h-[72px] w-[72px]"
-                    [ngClass]="{'grayscale': record.n1_vacancy_current_month == 'na' || record.n1_vacancy_current_month == 'Not Applicable' }" />
+                    [ngClass]="{'grayscale': record?.n1_vacancy_current_month == 'na' || record?.n1_vacancy_current_month == 'Not Applicable' }" />
                 <br />
                 <span class="text-center font-semibold"
-                    [ngClass]="record.n1_vacancy_current_month == 'na' || record.n1_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Nursery</span>
+                    [ngClass]="record?.n1_vacancy_current_month == 'na' || record?.n1_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Nursery</span>
             </div>
             <div class="p-2 justify-items-center">1
                 <img src="./assets/images/KG.png" class="h-[72px] w-[72px]"
-                    [ngClass]="{'grayscale': record.k1_vacancy_current_month == 'na' || record.k1_vacancy_current_month == 'Not Applicable' }" />
+                    [ngClass]="{'grayscale': record?.k1_vacancy_current_month == 'na' || record?.k1_vacancy_current_month == 'Not Applicable' }" />
                 <br />
                 <span class="text-center font-semibold"
-                    [ngClass]="record.k1_vacancy_current_month == 'na' || record.k1_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Kindergarten</span>
+                    [ngClass]="record?.k1_vacancy_current_month == 'na' || record?.k1_vacancy_current_month == 'Not Applicable' ? 'text-gray-700': 'text-white'">Kindergarten</span>
             </div>
         </div>
         <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-16 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
@@ -86,31 +86,31 @@
                 </span>
                 <h2 class="text-xl font-semibold capitalize text-white">Centre Code</h2>
                 <p class="text-gray-300">
-                    {{record.centre_code}}
+                    {{record?.centre_code}}
                 </p>
                 <h2 class="text-xl font-semibold capitalize text-white">Service Model</h2>
                 <p class="text-gray-300">
-                    {{record.service_model}}
+                    {{record?.service_model}}
                 </p>
                 <h2 class="text-xl font-semibold capitalize text-white">Org. Code</h2>
                 <p class="text-gray-300">
-                    {{record.organisation_code}}
+                    {{record?.organisation_code}}
                 </p>
                 <h2 class="text-xl font-semibold capitalize text-white">Org. Desc</h2>
                 <p class="text-gray-300">
-                    {{record.organisation_description}}
+                    {{record?.organisation_description}}
                 </p>
             </div>
             <div class="space-y-3">
                 <span class="inline-block p-3 rounded-full text-white bg-blue-500">
                     Vacancy Information
                 </span> <br />
-                <div [innerHTML]="this.getVacancyStatus(record.infant_vacancy_current_month,'Infant Care')"></div>
-                <div [innerHTML]="this.getVacancyStatus(record.pg_vacancy_current_month,'Play Group')"></div>
-                <div [innerHTML]="this.getVacancyStatus(record.n1_vacancy_current_month,'N1')"></div>
-                <div [innerHTML]="this.getVacancyStatus(record.n2_vacancy_current_month,'N2')"></div>
-                <div [innerHTML]="this.getVacancyStatus(record.k1_vacancy_current_month,'K1')"></div>
-                <div [innerHTML]="this.getVacancyStatus(record.k2_vacancy_current_month,'K2')"></div>
+                <div [innerHTML]="this.getVacancyStatus(record?.infant_vacancy_current_month,'Infant Care')"></div>
+                <div [innerHTML]="this.getVacancyStatus(record?.pg_vacancy_current_month,'Play Group')"></div>
+                <div [innerHTML]="this.getVacancyStatus(record?.n1_vacancy_current_month,'N1')"></div>
+                <div [innerHTML]="this.getVacancyStatus(record?.n2_vacancy_current_month,'N2')"></div>
+                <div [innerHTML]="this.getVacancyStatus(record?.k1_vacancy_current_month,'K1')"></div>
+                <div [innerHTML]="this.getVacancyStatus(record?.k2_vacancy_current_month,'K2')"></div>
             </div>
 
             <div class="space-y-3">
@@ -120,17 +120,17 @@
 
                 <h2 class="text-xl font-semibold capitalize text-white">Weekday full day</h2>
                 <p class="text-gray-300">
-                    {{record.weekday_full_day}}
+                    {{record?.weekday_full_day}}
                 </p>
 
                 <h2 class="text-xl font-semibold capitalize text-white">Saturday</h2>
                 <p class="text-gray-300">
-                    {{record.saturday}}
+                    {{record?.saturday}}
                 </p>
 
                 <h2 class="text-xl font-semibold capitalize text-white">Extended Operating Hours</h2>
                 <p class="text-gray-300">
-                    {{record.extended_operating_hours}}
+                    {{record?.extended_operating_hours}}
                 </p>
             </div>
             <div class="space-y-3">
@@ -139,19 +139,19 @@
                 </span>
                 <h2 class="text-xl font-semibold capitalize text-white">Second languages offered</h2>
                 <p class="text-gray-300">
-                    {{record.second_languages_offered}}
+                    {{record?.second_languages_offered}}
                 </p>
                 <h2 class="text-xl font-semibold capitalize text-white">Food options</h2>
                 <p class="text-gray-300">
-                    {{record.food_offered}}
+                    {{record?.food_offered}}
                 </p>
                 <h2 class="text-xl font-semibold capitalize text-white">Transport offered</h2>
                 <p class="text-gray-300">
-                    {{record.provision_of_transport}}
+                    {{record?.provision_of_transport}}
                 </p>
                 <h2 class="text-xl font-semibold capitalize text-white">Govt. Subsidy offered</h2>
                 <p class="text-gray-300">
-                    {{record.government_subsidy}}
+                    {{record?.government_subsidy}}
                 </p>
             </div>
             <div class="space-y-3 col-span-1 sm:col-span-2">

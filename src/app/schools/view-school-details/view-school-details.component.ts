@@ -87,4 +87,11 @@ export class ViewSchoolDetailsComponent implements OnInit {
       }
     });
   }
+
+  normaliseUrl(url: string): string {
+    if (url && url.startsWith('www.')) {
+      return url = 'https://' + url;
+    }
+    return url;
+  }
 }
